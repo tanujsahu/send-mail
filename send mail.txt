@@ -1,0 +1,33 @@
+use nodemailer :-
+
+npm install nodemailer
+
+allow to less secure your account :-
+https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4N76c4fkxEmIXhxAGTja__aUfjkfpoJN3YTb0JJbz63SZ0VlYTgj9iO2NtnxOBLefQ_M8cGu1mIjPRqpGoaDeyqPx4NVQ
+
+let mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'abc@gmail.com',
+        pass: 'password here'
+    }
+});
+
+let mailDetails = {
+    from: 'abc@gmail.com', //-------- sender email
+    to: 'xyz@gmail.com', //-------- receiver email
+    subject: 'Test mail', //-------- subject do you want
+    text: 'Node.js testing mail for SIT //-------- message 
+  html: "<b>Hello world?</b> <i>Tanuj Sahu Here<i>", // html body
+};
+
+mailTransporter.sendMail(mailDetails, function (err, data) {
+    if (err) {
+        console.log('Error Occurs');
+    } else {
+        console.log('Email sent successfully');
+    }
+});
